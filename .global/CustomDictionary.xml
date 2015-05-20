@@ -1,0 +1,16 @@
+﻿<!-- This file contains a list of terms and spellings code analysis shoudl ignore.-->
+<!-- Please keep this list in alphabetical order to make maintenance easier.-->
+<Dictionary>
+  <Words>
+    <Recognized>
+      <Word>Auth</Word>
+      <Word>Deserialize</Word>
+      <Word>Deserializes</Word>
+    </Recognized>
+  </Words>
+  <Acronyms>
+    <CasingExceptions>
+      <Acronym>LSCS</Acronym>
+    </CasingExceptions>
+  </Acronyms>
+</Dictionary>
