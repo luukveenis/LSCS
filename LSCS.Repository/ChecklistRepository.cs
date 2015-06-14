@@ -26,6 +26,11 @@ namespace LSCS.Repository
             _collection.CreateIndex(IndexKeys<ChecklistDto>.Ascending(c => c.CreatedAt));
         }
 
+        public Task<bool> ChecklistExists(Guid checklistId)
+        {
+            return Task.Run(() => _collection.Find(Query.EQ("Id", checklistId)).Any());
+        }
+
         public Task UpsertChecklist(ChecklistDto checklist)
         {
             return Task.Run(() => _collection.Save(checklist));
@@ -41,12 +46,9 @@ namespace LSCS.Repository
             return Task.Run(() => _collection.FindOneById(checklistId));
         }
 
-        public IQueryable<ChecklistDto> GetAllChecklists(int? limit, int? skip)
+        public IQueryable<ChecklistDto> GetChecklists()
         {
             var query = _collection.FindAll();
-            if (limit.HasValue) query.SetLimit(limit.Value);
-            if (skip.HasValue) query.SetSkip(skip.Value);
-
             return query.AsQueryable();
         }
     }

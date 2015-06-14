@@ -55,12 +55,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LSCS.Web\LSCS.Web.csproj">
-      <Project>{0a91fa49-7257-4159-a6fd-5fd69a205cb0}</Project>
-      <Name>LSCS.Web</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <CodeAnalysisDictionary Include="..\.global\CustomDictionary.xml">
       <Link>CustomDictionary.xml</Link>
     </CodeAnalysisDictionary>
