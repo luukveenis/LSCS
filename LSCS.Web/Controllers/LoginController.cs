@@ -10,7 +10,7 @@ namespace LSCS.Web.Controllers
         [AllowAnonymous]
         public ActionResult Login(string redirectUrl)
         {
-            return null;
+            return View();
         }
 
         [Route]
