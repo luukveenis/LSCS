@@ -58,6 +58,7 @@
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="ChecklistRepository.cs" />
+    <Compile Include="Exceptions\RepositoryException.cs" />
     <Compile Include="IChecklistRepository.cs" />
     <Compile Include="MongoDbRepositoryBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
