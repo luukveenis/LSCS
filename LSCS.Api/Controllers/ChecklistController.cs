@@ -23,7 +23,7 @@ namespace LSCS.Api.Controllers
 
         [Route("")]
         [HttpGet]
-        public HttpResponseMessage GetChecklists(int pageNumber = 1, int pageSize = 0, string sortField = null, string sortDirection = null)
+        public HttpResponseMessage GetChecklists(int pageNumber = 1, int pageSize = 0, string sortField = "Title", string sortDirection = "asc")
         {
             if (pageSize == 0 || pageSize > PageSizeLimit)
             {
@@ -34,7 +34,7 @@ namespace LSCS.Api.Controllers
 
             try
             {
-                var sortParam = new SortParameter(sortField ?? "Title", sortDirection ?? "asc");
+                var sortParam = new SortParameter(sortField, sortDirection);
                 SortCollection(results, sortParam);
             }
             catch (Exception e)
@@ -53,7 +53,7 @@ namespace LSCS.Api.Controllers
         public async Task<HttpResponseMessage> AddChecklist(ChecklistDto newChecklist)
         {
             if(newChecklist == null)
-                throw new InvalidQueryException("Received and invalid checklist format.");
+                throw new InvalidQueryException("Received an invalid checklist format.");
             if(newChecklist.Id.HasValue)
                 throw new InvalidQueryException("Checklist may not specify an ID.");
 

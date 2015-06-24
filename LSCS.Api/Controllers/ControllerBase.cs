@@ -66,7 +66,7 @@ namespace LSCS.Api.Controllers
 
         private IEnumerable<string> GetLinkElements(Uri baseUri, int pageNumber, int pageSize, int totalElements)
         {
-            int totalPages = totalElements == 0 ? 1 : (int)Math.Ceiling(totalElements / (float)pageNumber);
+            int totalPages = totalElements == 0 ? 1 : (int)Math.Ceiling(totalElements / (float)pageSize);
 
             var linkElements = new List<string>();
             linkElements.Add(BuildLinkElement(Request.RequestUri, 1, pageSize, "first"));
