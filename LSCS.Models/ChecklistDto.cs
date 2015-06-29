@@ -40,8 +40,8 @@ namespace LSCS.Models
             return String.Equals(Title, other.Title) &&
                     String.Equals(Description, other.Description) &&
                     FileNumber == other.FileNumber &&
-                    (SurveyLocation == null) ? (other.SurveyLocation == null) : SurveyLocation.Equals(other.SurveyLocation) &&
-                    (Items == null) ? (other.Items == null) : Items.SequenceEqual(other.Items);
+                    (SurveyLocation == null ? (other.SurveyLocation == null) : SurveyLocation.Equals(other.SurveyLocation)) &&
+                    (Items == null ? (other.Items == null) : Items.SequenceEqual(other.Items));
         }
 
         #endregion

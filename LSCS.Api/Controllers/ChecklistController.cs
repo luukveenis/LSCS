@@ -25,26 +25,33 @@ namespace LSCS.Api.Controllers
         [HttpGet]
         public HttpResponseMessage GetChecklists(int pageNumber = 1, int pageSize = 0, string sortField = "Title", string sortDirection = "asc")
         {
-            if (pageSize == 0 || pageSize > PageSizeLimit)
-            {
-                pageSize = PageSizeLimit;
-            }
-
             var results = _repository.GetChecklists();
 
             try
             {
                 var sortParam = new SortParameter(sortField, sortDirection);
-                SortCollection(results, sortParam);
+                results = SortCollection(results, sortParam);
             }
             catch (Exception e)
             {
-                throw new InvalidQueryException("Inavlid sort parameter(s).");
+                throw new InvalidQueryException("Inavlid sort parameter(s).", e);
             }
-            var pagedResults = PageCollection(results, pageNumber, pageSize);
+
+            try
+            {
+                if (pageSize == 0 || pageSize > PageSizeLimit)
+                {
+                    pageSize = PageSizeLimit;
+                }
+                results = PageCollection(results, pageNumber, pageSize);
+            }
+            catch (Exception e)
+            {
+                throw new InvalidQueryException("Invalid paging parameter(s).", e);
+            }
           
             var response = Request.CreateResponse(HttpStatusCode.OK, results);
-            CreatePagedResponseHeader(response, pageNumber, pageSize, pagedResults.Count());
+            CreatePagedResponseHeader(response, pageNumber, pageSize, results.Count());
             return response;
         }
 

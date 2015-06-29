@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Globalization;
 using System.Linq;
 using System.Linq.Dynamic;
@@ -14,7 +13,7 @@ namespace LSCS.Api.Controllers
     {
         protected int PageSizeLimit { get; set; }
 
-        protected IEnumerable<T> SortCollection<T>(IQueryable<T> collection, SortParameter sortParam, IList<string> validSortFields = null)
+        protected IQueryable<T> SortCollection<T>(IQueryable<T> collection, SortParameter sortParam, IList<string> validSortFields = null)
         {
             if (validSortFields != null)
             {
@@ -24,7 +23,7 @@ namespace LSCS.Api.Controllers
             return collection.OrderBy(sortParam.GetOrderByArgString());
         }
 
-        protected IEnumerable<T> PageCollection<T>(IQueryable<T> collection, int pageNumber, int pageSize)
+        protected IQueryable<T> PageCollection<T>(IQueryable<T> collection, int pageNumber, int pageSize)
         {
             if (collection == null) 
                 return null;
