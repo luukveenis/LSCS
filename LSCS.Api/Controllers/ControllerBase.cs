@@ -57,14 +57,13 @@ namespace LSCS.Api.Controllers
             response.Headers.Add(
                 "Link", 
                 String.Join(", ", GetLinkElements(
-                    Request.RequestUri,
                     pageNumber,
                     pageSize,
                     totalElements
                 )));   
         }
 
-        private IEnumerable<string> GetLinkElements(Uri baseUri, int pageNumber, int pageSize, int totalElements)
+        private IEnumerable<string> GetLinkElements(int pageNumber, int pageSize, int totalElements)
         {
             int totalPages = totalElements == 0 ? 1 : (int)Math.Ceiling(totalElements / (float)pageSize);
 

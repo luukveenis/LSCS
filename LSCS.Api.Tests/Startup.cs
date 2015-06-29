@@ -1,6 +1,5 @@
-﻿using System;
+﻿
 using System.Net.Http.Formatting;
-using System.Web.Configuration;
 using System.Web.Http;
 using LSCS.Api.Filters;
 using LSCS.Repository;
@@ -10,26 +9,12 @@ using Owin;
 using SimpleInjector;
 using SimpleInjector.Integration.WebApi;
 
-namespace LSCS.Api
+namespace LSCS.Api.Tests
 {
     public class Startup
     {
-
-        public string RepositoryConnectionString { get; private set; }
-        public string DatabaseName { get; private set; }
-        public int MaximumPageSize { get; private set; }
-
-        public Startup()
-        {
-            ReadConfigurationParameters();
-        }
-
-        private void ReadConfigurationParameters()
-        {
-            RepositoryConnectionString = WebConfigurationManager.ConnectionStrings["LSCS.Database"].ToString();
-            DatabaseName = WebConfigurationManager.AppSettings["databaseName"];
-            MaximumPageSize = Convert.ToInt32(WebConfigurationManager.AppSettings["apiMaxPageSize"]);
-        }
+        public IControllerConfiguration ControllerConfiguration { get; set; }
+        public IChecklistRepository ChecklistRepository { get; set; }
 
         public void Configuration(IAppBuilder app)
         {
@@ -62,9 +47,9 @@ namespace LSCS.Api
         {
             var container = new Container();
 
-            container.RegisterSingle<IChecklistRepository>(() => new ChecklistRepository(RepositoryConnectionString, DatabaseName));
-            container.RegisterSingle<IControllerConfiguration>(() => new ControllerConfiguration {PageSizeLimit = MaximumPageSize});
-
+            container.RegisterSingle(() => ChecklistRepository);
+            container.RegisterSingle(() => ControllerConfiguration);
+           
             container.RegisterWebApiControllers(config);
             container.Verify();
 
