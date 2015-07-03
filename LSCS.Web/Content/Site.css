@@ -42,13 +42,14 @@ textarea {
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size: 1.2em;
   font-weight:bold;
-  margin-right:0.5%;
+  padding-right:2%;
 }
 
 #navTitle{
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size: 1.9em;
   font-weight:bold;
+  line-height:1.1em;
 }
 
 h2{
