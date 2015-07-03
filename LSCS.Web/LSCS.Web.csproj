@@ -166,7 +166,9 @@
     <Content Include="log4net.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Login\Login.cshtml">
+      <BrowseToURL>~/Login</BrowseToURL>
+    </Content>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
