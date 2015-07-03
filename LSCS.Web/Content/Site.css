@@ -16,3 +16,42 @@ textarea {
     max-width: 280px;
 }
 
+.container {
+    width: 500px;
+    clear: both;
+}
+
+.container form {
+    display: table;
+}
+
+.container p {
+    display: table-row;
+}
+
+.container label {
+    display: table-cell;
+    min-width: 90px;
+}
+
+.container input {
+    display: table-cell;
+}
+
+#nav-opt{
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 1.2em;
+  font-weight:bold;
+  margin-right:0.5%;
+}
+
+#navTitle{
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 1.9em;
+  font-weight:bold;
+}
+
+h2{
+    font-weight:100;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif
+}
