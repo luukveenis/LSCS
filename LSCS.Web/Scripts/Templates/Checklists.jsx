@@ -19,7 +19,7 @@ var ChecklistList = React.createClass({
             );
         });
         return (
-            <table>
+            <table className="table table-hover">
                 <thead>
                     <tr>
                         <th>Title</th>
