@@ -10,6 +10,7 @@ namespace LSCS.Web.Controllers
     public class ChecklistController : Controller
     {
         [Route]
+        [Route("~/", Name = "default")]
         [HttpGet]
         [AllowAnonymous]
         // GET: Checklist
