@@ -59,7 +59,8 @@ namespace LSCS.Api.Controllers
                     pageNumber,
                     pageSize,
                     totalElements
-                )));   
+                )));
+            response.Headers.Add("Access-Control-Allow-Origin", "*");
         }
 
         private IEnumerable<string> GetLinkElements(int pageNumber, int pageSize, int totalElements)

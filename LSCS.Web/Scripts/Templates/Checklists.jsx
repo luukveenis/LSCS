@@ -3,17 +3,33 @@
         return (
             <tr>
                 <td>{this.props.data.Title}</td>
+                <td>{this.props.data.SurveyLocation.LandDistrict.Name}</td>
                 <td>{this.props.data.Description}</td>
                 <td>{this.props.data.FileNumber}</td>
-                <td>{this.props.data.Location}</td>
             </tr>
         );
     }
 });
 
 var ChecklistList = React.createClass({
+    loadChecklistsFromServer: function() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('get', this.props.url, true);
+        xhr.onload = function() {
+            var data = JSON.parse(xhr.responseText);
+            this.setState({ data: data });
+        }.bind(this);
+        xhr.send();
+    },
+    componentDidMount: function() {
+        this.loadChecklistsFromServer();
+        window.setInterval(this.loadChecklistsFromServer, this.props.pollInterval);
+    },
+        getInitialState: function() {
+        return {data: []};
+    },
     render: function() {
-        var checklistNodes = this.props.data.map(function (checklist) {
+        var checklistNodes = this.state.data.map(function (checklist) {
             return (
                 <Checklist data={checklist} />
             );
@@ -23,9 +39,9 @@ var ChecklistList = React.createClass({
                 <thead>
                     <tr>
                         <th>Title</th>
+                        <th>Location</th>
                         <th>Description</th>
                         <th>File No.</th>
-                        <th>Location</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,9 +52,7 @@ var ChecklistList = React.createClass({
     }
 });
 
-var data = [ { Title: "Test Title", Description: "Some stuff in here", FileNumber: 2053, Location: "The Moon" } ]
-
 React.render(
-    <ChecklistList data={data} />,
+    <ChecklistList url="http://localhost:1059/api/checklists" pollInterval={2000} />,
     document.getElementById('checklist-list')
 );
