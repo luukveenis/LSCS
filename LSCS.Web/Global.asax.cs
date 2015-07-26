@@ -16,9 +16,7 @@ namespace LSCS.Web
 
         private static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new JsxBundle("~/Scripts/react").Include(
-                "~/Scripts/Templates/*.jsx"
-            ));
+            // Create static asset bundles here
         }
     }
 }

@@ -16,11 +16,6 @@ textarea {
     max-width: 280px;
 }
 
-.container {
-    width: 500px;
-    clear: both;
-}
-
 .container form {
     display: table;
 }
