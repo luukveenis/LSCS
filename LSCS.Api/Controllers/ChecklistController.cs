@@ -4,13 +4,19 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using LSCS.Api.Exceptions;
 using LSCS.Models;
 using LSCS.Repository;
 
 namespace LSCS.Api.Controllers
 {
+    /* EnableCors enables Cross-Origin Resource Sharing.
+     * This is required because the API and Web App are hosted on separate domains.
+     * If this was deployed we would only allow origin as the web app for security reasons,
+     * but for this project we simply allow all requests since it's hosted locally. */
     [RoutePrefix("api/checklists")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ChecklistController : ControllerBase
     {
         private readonly IChecklistRepository _repository;
