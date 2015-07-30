@@ -7,7 +7,7 @@ using System.Web.Mvc;
 namespace LSCS.Web.Controllers
 {
     [RoutePrefix("checklists")]
-    public class ChecklistController : Controller
+    public class ChecklistsController : Controller
     {
         [Route]
         [Route("~/", Name = "default")]
@@ -15,6 +15,12 @@ namespace LSCS.Web.Controllers
         [AllowAnonymous]
         // GET: Checklist
         public ActionResult Index()
+        {
+            return View();
+        }
+
+        [Route("new")]
+        public ActionResult New()
         {
             return View();
         }
