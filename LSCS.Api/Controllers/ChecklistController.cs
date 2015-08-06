@@ -111,7 +111,7 @@ namespace LSCS.Api.Controllers
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
-        #region
+        #region Helpers
 
         private void InitializeNewChecklist(ChecklistDto checklist)
         {
