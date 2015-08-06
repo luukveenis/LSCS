@@ -82,7 +82,7 @@ namespace LSCS.Repository
             {
                 try
                 {
-                    return _collection.Remove(Query.EQ("Id", checklistId));
+                    return _collection.Remove(Query.EQ("_id", checklistId));
                 }
                 catch(Exception ex)
                 {
