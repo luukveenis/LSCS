@@ -44,6 +44,9 @@ namespace LSCS.Api
             // Map API routes
             config.MapHttpAttributeRoutes();
 
+            // Enable CORS
+            config.EnableCors();
+
             // Register configuration
             app.UseWebApi(config);
         }

@@ -46,3 +46,23 @@ h2{
     font-weight:100;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif
 }
+
+/* ======== Form Styling ======== */
+
+.form-object {
+    background-color: #d9d9d9;
+    border-radius: 4px 4px;
+    padding: 10px 10px;
+    margin: 10px 0;
+}
+
+.form-sub-object {
+    background-color: #ebebeb;
+    border-radius: 4px 4px;
+    padding: 10px 10px;
+    margin: 10px 0;
+}
+
+legend {
+    border-bottom: none;
+}
