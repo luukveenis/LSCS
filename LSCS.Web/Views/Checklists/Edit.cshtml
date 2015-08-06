@@ -77,13 +77,17 @@
                 <div class="form-sub-object">
                     <fieldset name="Coordinate">
                         <legend>Coordinate</legend>
-                        @Html.LabelFor(model => model.SurveyLocation.Coordinate.Latitude, new { @class = "col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.SurveyLocation.Coordinate.Latitude)
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.SurveyLocation.Coordinate.Latitude, new { @class = "col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.SurveyLocation.Coordinate.Latitude)
+                            </div>
                         </div>
-                        @Html.LabelFor(model => model.SurveyLocation.Coordinate.Longitude, new { @class = "col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.SurveyLocation.Coordinate.Longitude)
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.SurveyLocation.Coordinate.Longitude, new { @class = "col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.SurveyLocation.Coordinate.Longitude)
+                            </div>
                         </div>
                     </fieldset>
                 </div>
