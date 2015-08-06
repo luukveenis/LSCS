@@ -46,7 +46,7 @@ namespace LSCS.Repository
             {
                 try
                 {
-                    return _collection.Find(Query.EQ("Id", checklistId)).Any();
+                    return _collection.Find(Query.EQ("_id", checklistId)).Any();
                 }
                 catch(Exception ex)
                 {
