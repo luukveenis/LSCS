@@ -29,6 +29,40 @@
         })
     });
 
+    /* Similar to creating a new checklist, we need to manually construct
+     * nested JSON structure we require. In this case we have to take into
+     * account the checklist items and create the array in the correct order. */
+    $("#edit-checklist-form").submit(function (event) {
+        event.preventDefault();
+        var url = $(this).prop('action');
+
+        var result = $(this).serializeArray().reduce(function (p, c) {
+            var match; // stores the result of matching the Status regex
+            if (match = c.name.match(/Items\[(\d+)\]\.Status/)) {
+                var itemText = checklistItems()[parseInt(match[1])].Text;
+                p["Items"].push({ Text: itemText, Status: c.value });
+            } else {
+                var keys = c.name.split(".");
+                p = $.extend(true, {}, p, constructJsonObject(keys, c.value));
+            }
+            return p;
+        }, { Items: [] }); // Begin with an empty Items array so we can append to it
+
+        debugger;
+        $.ajax({
+            method: "PUT",
+            url: url,
+            data: JSON.stringify(result),
+            contentType: "application/json"
+        })
+        .done(function (msg) {
+            window.location.replace("http://localhost:49177/checklists");
+        })
+        .fail(function (jqXHR, status, error) {
+            alert("Request failed: " + error);
+        })
+    });
+
     /* Takes a list of keys and a value and constructs the nested JSON structure.
      * i.e.: (["Foo", "Bar"], val1) => { "Foo": { "Bar": val1 } }  */
     function constructJsonObject(keys, value) {

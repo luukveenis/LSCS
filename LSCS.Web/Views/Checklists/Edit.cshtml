@@ -1,0 +1,151 @@
+﻿@model LSCS.Models.ChecklistDto
+
+@{
+    ViewBag.Title = "New Checklist";
+}
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { @action = "http://localhost:1059/api/checklists/" + Model.Id, @id = "edit-checklist-form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal container-inline">
+        <h4>New Checklist</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, new { @class = "col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, new { @class = "col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Description, new { @rows = "5", @cols = "80" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.FileNumber, new { @class = "col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FileNumber)
+            </div>
+        </div>
+        <div class="form-object">
+            <fieldset name="SurveyLocation">
+                <legend>Survey Location</legend>
+                <div class="form-sub-object">
+                    <fieldset name="Address">
+                        <legend>Address</legend>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.SurveyLocation.Address.AddressLine1, "Address 1", new { @class = "col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.SurveyLocation.Address.AddressLine1)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.SurveyLocation.Address.AddressLine2, "Address 2", new { @class = "col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.SurveyLocation.Address.AddressLine2)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.SurveyLocation.Address.City, new { @class = "col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.SurveyLocation.Address.City)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.SurveyLocation.Address.StateProvince, "Province", new { @class = "col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.SurveyLocation.Address.StateProvince)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.SurveyLocation.Address.CountryRegion, "Country", new { @class = "col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.SurveyLocation.Address.CountryRegion)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.SurveyLocation.Address.PostalCode, "Zip Code", new { @class = "col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.SurveyLocation.Address.PostalCode)
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="form-sub-object">
+                    <fieldset name="Coordinate">
+                        <legend>Coordinate</legend>
+                        @Html.LabelFor(model => model.SurveyLocation.Coordinate.Latitude, new { @class = "col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.SurveyLocation.Coordinate.Latitude)
+                        </div>
+                        @Html.LabelFor(model => model.SurveyLocation.Coordinate.Longitude, new { @class = "col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.SurveyLocation.Coordinate.Longitude)
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="form-sub-object">
+                    <fieldset name="LandDistrict">
+                        <legend>Land District</legend>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.SurveyLocation.LandDistrict.Name, new { @class = "col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.SurveyLocation.LandDistrict.Name)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.SurveyLocation.LandDistrict.NtsMap, new { @class = "col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.SurveyLocation.LandDistrict.NtsMap)
+                            </div>
+                        </div>
+                        <fieldset name="Coordinate">
+                            <legend>Coordinate</legend>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.SurveyLocation.LandDistrict.Coordinate.Latitude, new { @class = "col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.SurveyLocation.LandDistrict.Coordinate.Latitude)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.SurveyLocation.LandDistrict.Coordinate.Longitude, new { @class = "col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.SurveyLocation.LandDistrict.Coordinate.Longitude)
+                                </div>
+                            </div>
+                        </fieldset>
+                    </fieldset>
+                </div>
+            </fieldset>
+            <div class="form-group">
+                @for (var i = 0; i < Model.Items.Count; i++)
+                {
+                    <div class="control-group">
+                        @Html.LabelFor(model => model.Items[i], Model.Items[i].Text, new { @class = "col-md-6" })
+                        <div class="col-md-8">
+                            @foreach (var status in Enum.GetValues(typeof(LSCS.Models.ChecklistItemStatus)))
+                            {
+                                <label class="control-label radio-inline">
+                                    @Html.RadioButtonFor(model => model.Items[i].Status, status)
+                                    @status.ToString()
+                                </label>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
