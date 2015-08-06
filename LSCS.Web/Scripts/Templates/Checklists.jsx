@@ -1,11 +1,14 @@
 ﻿var Checklist = React.createClass({
     render: function() {
+        editUrl = "http://localhost:49177/checklists/edit/" + this.props.data.Id;
+        deleteUrl = "http://localhost:1059/api/checklists/" + this.props.data.Id;
         return (
             <tr>
                 <td>{this.props.data.Title}</td>
                 <td>{this.props.data.SurveyLocation.LandDistrict.Name}</td>
                 <td>{this.props.data.Description}</td>
                 <td>{this.props.data.FileNumber}</td>
+                <td><a href={editUrl}>Edit</a> <a href={deleteUrl} className="delete-checklist-link">Delete</a></td>
             </tr>
         );
     }
@@ -42,6 +45,7 @@ var ChecklistList = React.createClass({
                         <th>Location</th>
                         <th>Description</th>
                         <th>File No.</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
