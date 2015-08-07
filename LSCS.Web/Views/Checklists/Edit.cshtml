@@ -12,119 +12,138 @@
         <h4>Edit Checklist</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Title, new { @class = "col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Description, new { @class = "col-md-2" })
-            <div class="col-md-10">
-                @Html.TextAreaFor(model => model.Description, new { @rows = "5", @cols = "80", @class = "form-control" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.FileNumber, new { @class = "col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.FileNumber, new { @type = "number", @class = "form-control" })
-            </div>
-        </div>
-        <div class="form-object">
-            <fieldset name="SurveyLocation">
-                <legend>Survey Location</legend>
-                <div class="form-sub-object">
-                    <fieldset name="Address">
-                        <legend>Address</legend>
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.SurveyLocation.Address.AddressLine1, "Address 1", new { @class = "col-md-2" })
-                            <div class="col-md-10">
-                                @Html.TextBoxFor(model => model.SurveyLocation.Address.AddressLine1, new { @class = "form-control" })
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.SurveyLocation.Address.AddressLine2, "Address 2", new { @class = "col-md-2" })
-                            <div class="col-md-10">
-                                @Html.TextBoxFor(model => model.SurveyLocation.Address.AddressLine2, new { @class = "form-control" })
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.SurveyLocation.Address.City, new { @class = "col-md-2" })
-                            <div class="col-md-10">
-                                @Html.TextBoxFor(model => model.SurveyLocation.Address.City, new { @class = "form-control" })
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.SurveyLocation.Address.StateProvince, "Province", new { @class = "col-md-2" })
-                            <div class="col-md-10">
-                                @Html.TextBoxFor(model => model.SurveyLocation.Address.StateProvince, new { @class = "form-control" })
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.SurveyLocation.Address.CountryRegion, "Country", new { @class = "col-md-2" })
-                            <div class="col-md-10">
-                                @Html.TextBoxFor(model => model.SurveyLocation.Address.CountryRegion, new { @class = "form-control" })
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.SurveyLocation.Address.PostalCode, "Zip Code", new { @class = "col-md-2" })
-                            <div class="col-md-10">
-                                @Html.TextBoxFor(model => model.SurveyLocation.Address.PostalCode, new { @class = "form-control" })
-                            </div>
-                        </div>
-                    </fieldset>
+        @if (User.IsInRole("Administrator")) {
+            <div class="form-group">
+                @Html.LabelFor(model => model.Title, new { @class = "col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
                 </div>
-                <div class="form-sub-object">
-                    <fieldset name="Coordinate">
-                        <legend>Coordinate</legend>
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.SurveyLocation.Coordinate.Latitude, new { @class = "col-md-2" })
-                            <div class="col-md-10">
-                                @Html.TextBoxFor(model => model.SurveyLocation.Coordinate.Latitude, new { @class = "form-control" })
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.SurveyLocation.Coordinate.Longitude, new { @class = "col-md-2" })
-                            <div class="col-md-10">
-                                @Html.TextBoxFor(model => model.SurveyLocation.Coordinate.Longitude, new { @class = "form-control" })
-                            </div>
-                        </div>
-                    </fieldset>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Description, new { @class = "col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.Description, new { @rows = "5", @cols = "80", @class = "form-control" })
                 </div>
-                <div class="form-sub-object">
-                    <fieldset name="LandDistrict">
-                        <legend>Land District</legend>
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.SurveyLocation.LandDistrict.Name, new { @class = "col-md-2" })
-                            <div class="col-md-10">
-                                @Html.TextBoxFor(model => model.SurveyLocation.LandDistrict.Name, new { @class = "form-control" })
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.SurveyLocation.LandDistrict.NtsMap, new { @class = "col-md-2" })
-                            <div class="col-md-10">
-                                @Html.TextBoxFor(model => model.SurveyLocation.LandDistrict.NtsMap, new { @class = "form-control" })
-                            </div>
-                        </div>
-                        <fieldset name="Coordinate">
-                            <legend>Coordinate</legend>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.FileNumber, new { @class = "col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.FileNumber, new { @type = "number", @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-object">
+                <fieldset name="SurveyLocation">
+                    <legend>Survey Location</legend>
+                    <div class="form-sub-object">
+                        <fieldset name="Address">
+                            <legend>Address</legend>
                             <div class="form-group">
-                                @Html.LabelFor(model => model.SurveyLocation.LandDistrict.Coordinate.Latitude, new { @class = "col-md-2" })
+                                @Html.LabelFor(model => model.SurveyLocation.Address.AddressLine1, "Address 1", new { @class = "col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.TextBoxFor(model => model.SurveyLocation.LandDistrict.Coordinate.Latitude, new { @class = "form-control" })
+                                    @Html.TextBoxFor(model => model.SurveyLocation.Address.AddressLine1, new { @class = "form-control" })
                                 </div>
                             </div>
                             <div class="form-group">
-                                @Html.LabelFor(model => model.SurveyLocation.LandDistrict.Coordinate.Longitude, new { @class = "col-md-2" })
+                                @Html.LabelFor(model => model.SurveyLocation.Address.AddressLine2, "Address 2", new { @class = "col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.TextBoxFor(model => model.SurveyLocation.LandDistrict.Coordinate.Longitude, new { @class = "form-control" })
+                                    @Html.TextBoxFor(model => model.SurveyLocation.Address.AddressLine2, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.SurveyLocation.Address.City, new { @class = "col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(model => model.SurveyLocation.Address.City, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.SurveyLocation.Address.StateProvince, "Province", new { @class = "col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(model => model.SurveyLocation.Address.StateProvince, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.SurveyLocation.Address.CountryRegion, "Country", new { @class = "col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(model => model.SurveyLocation.Address.CountryRegion, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.SurveyLocation.Address.PostalCode, "Zip Code", new { @class = "col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(model => model.SurveyLocation.Address.PostalCode, new { @class = "form-control" })
                                 </div>
                             </div>
                         </fieldset>
-                    </fieldset>
-                </div>
-            </fieldset>
-        </div>
+                    </div>
+                    <div class="form-sub-object">
+                        <fieldset name="Coordinate">
+                            <legend>Coordinate</legend>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.SurveyLocation.Coordinate.Latitude, new { @class = "col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(model => model.SurveyLocation.Coordinate.Latitude, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.SurveyLocation.Coordinate.Longitude, new { @class = "col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(model => model.SurveyLocation.Coordinate.Longitude, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="form-sub-object">
+                        <fieldset name="LandDistrict">
+                            <legend>Land District</legend>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.SurveyLocation.LandDistrict.Name, new { @class = "col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(model => model.SurveyLocation.LandDistrict.Name, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.SurveyLocation.LandDistrict.NtsMap, new { @class = "col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(model => model.SurveyLocation.LandDistrict.NtsMap, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <fieldset name="Coordinate">
+                                <legend>Coordinate</legend>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.SurveyLocation.LandDistrict.Coordinate.Latitude, new { @class = "col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.TextBoxFor(model => model.SurveyLocation.LandDistrict.Coordinate.Latitude, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.SurveyLocation.LandDistrict.Coordinate.Longitude, new { @class = "col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.TextBoxFor(model => model.SurveyLocation.LandDistrict.Coordinate.Longitude, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </fieldset>
+                    </div>
+                </fieldset>
+            </div>
+        }
+        @if (!User.IsInRole("Administrator")) {
+            @Html.HiddenFor(model => model.Title)
+            @Html.HiddenFor(model => model.Description)
+            @Html.HiddenFor(model => model.FileNumber)
+            @Html.HiddenFor(model => model.SurveyLocation.Address.AddressLine1)
+            @Html.HiddenFor(model => model.SurveyLocation.Address.AddressLine2)
+            @Html.HiddenFor(model => model.SurveyLocation.Address.City)
+            @Html.HiddenFor(model => model.SurveyLocation.Address.StateProvince)
+            @Html.HiddenFor(model => model.SurveyLocation.Address.CountryRegion)
+            @Html.HiddenFor(model => model.SurveyLocation.Address.PostalCode)
+            @Html.HiddenFor(model => model.SurveyLocation.Coordinate.Latitude)
+            @Html.HiddenFor(model => model.SurveyLocation.Coordinate.Longitude)
+            @Html.HiddenFor(model => model.SurveyLocation.LandDistrict.Name)
+            @Html.HiddenFor(model => model.SurveyLocation.LandDistrict.NtsMap)
+            @Html.HiddenFor(model => model.SurveyLocation.LandDistrict.Coordinate.Latitude)
+            @Html.HiddenFor(model => model.SurveyLocation.LandDistrict.Coordinate.Longitude)
+        }
         <iframe id="forecast_embed" type="text/html" frameborder="0" height="245" width="100%"
                 src="http://forecast.io/embed/#lat=@(Model.SurveyLocation.Coordinate.Latitude)&lon=@(Model.SurveyLocation.Coordinate.Longitude)&name=@(Model.SurveyLocation.LandDistrict.Name)"></iframe>
         <iframe src="https://www.google.com/maps/embed/v1/place?q=@(Model.SurveyLocation.Coordinate.Latitude)%2c@(Model.SurveyLocation.Coordinate.Longitude)&key=AIzaSyCJ03ynONA_qVG4ILQ6F5Zlo4DB8YHdBb0"
