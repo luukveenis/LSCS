@@ -2,7 +2,6 @@
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Optimization;
-using System.Web.Optimization.React;
 
 namespace LSCS.Web
 {

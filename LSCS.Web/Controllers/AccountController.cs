@@ -9,7 +9,7 @@ using Microsoft.Owin.Security;
 
 namespace LSCS.Web.Controllers
 {
-    [Authorize]
+    [RoutePrefix("account")]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
@@ -49,8 +49,8 @@ namespace LSCS.Web.Controllers
             SignInManager = signInManager;
         }
 
-        //
-        // GET: /Account/Login
+        [Route("login")]
+        [HttpGet]
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
@@ -58,8 +58,7 @@ namespace LSCS.Web.Controllers
             return View();
         }
 
-        //
-        // POST: /Account/Login
+        [Route("login")]
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -81,16 +80,15 @@ namespace LSCS.Web.Controllers
             }
         }
 
-        //
-        // GET: /Account/Register
+        [Route("register")]
+        [HttpGet]
         [AllowAnonymous]
         public ActionResult Register()
         {
             return View();
         }
 
-        //
-        // POST: /Account/Register
+        [Route("register")]
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]

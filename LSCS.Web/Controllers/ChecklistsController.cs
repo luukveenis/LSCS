@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Net.Http;
 using System.Web.Mvc;
 using LSCS.Models;
@@ -15,8 +12,7 @@ namespace LSCS.Web.Controllers
         [Route]
         [Route("~/", Name = "default")]
         [HttpGet]
-        [AllowAnonymous]
-        // GET: Checklist
+        [Authorize]
         public ActionResult Index()
         {
             return View();
