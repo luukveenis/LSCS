@@ -27,6 +27,18 @@
                     <li>
                         @Html.ActionLink("Checklists", "Index", "Checklists")
                     </li>
+                    @if (User.IsInRole("Administrator")) {
+                        <li role="presentation" class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    @Html.ActionLink("Create New User", "Register", "Account")
+                                </li>
+                            </ul>
+                        </li>
+                    }
                     <li>
                         @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { @id = "logout-form" })) { @Html.AntiForgeryToken() }
                         <a href="#" id="logout-button">Log Out</a>

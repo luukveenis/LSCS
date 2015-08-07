@@ -9,6 +9,9 @@
 
 <h2>Checklists</h2>
 
-@Html.ActionLink("Create New Checklist", "new")
+@if (User.IsInRole("Administrator"))
+{
+    @Html.ActionLink("Create New Checklist", "new")
+}
 
 <div id="checklist-list"></div>
