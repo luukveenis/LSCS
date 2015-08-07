@@ -34,3 +34,10 @@ The Web project contains the main web app. This project is where all the UI for 
 
 The Web project also manages user accounts. It is supported by a SQL Server database instead of MongoDB, like the API. It provides the mechanisms to create new accounts, log in, log out, etc.
 
+## LSCS.Models
+
+The models project contains all the data models that are used by both the API and the Web project to transfer data.
+
+## LSCS.Repository
+
+The repository project contains code for configuring and handling communication with the database.
