@@ -50,17 +50,17 @@ namespace LSCS.Web.Controllers
             SignInManager = signInManager;
         }
 
-        // GET: /Account/Login
+        // GET: /Account/Login?redirectUrl
         [HttpGet]
         [AllowAnonymous]
         [Route("Login")]
         public ActionResult Login(string returnUrl)
         {
-            ViewBag.ReturnUrl = returnUrl;
+            ViewBag.ReturnUrl = returnUrl ?? Url.Action("Index", "Checklists");
             return View();
         }
 
-        // POST: /Account/Login
+        // POST: /Account/Login?redirectUrl
         [HttpPost]
         [Route("Login")]
         [AllowAnonymous]
@@ -76,7 +76,7 @@ namespace LSCS.Web.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToLocal(returnUrl ?? Url.Action("Index", "Checklists"));
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
                     return View(model);

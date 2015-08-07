@@ -16,7 +16,7 @@ namespace LSCS.Web.Authentication
 
         public override Task<ClaimsIdentity> CreateUserIdentityAsync(LscsUser user)
         {
-            return ((LscsUserManager)UserManager).CreateIdentityAsync(user, DefaultAuthenticationTypes.ExternalBearer);
+            return ((LscsUserManager)UserManager).CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
         }
 
         public static ApplicationSignInManager Create(IdentityFactoryOptions<ApplicationSignInManager> options, IOwinContext context)
