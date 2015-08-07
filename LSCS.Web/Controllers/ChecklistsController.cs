@@ -6,13 +6,13 @@ using Newtonsoft.Json;
 
 namespace LSCS.Web.Controllers
 {
+    [Authorize]
     [RoutePrefix("checklists")]
     public class ChecklistsController : Controller
     {
         [Route]
         [Route("~/", Name = "default")]
         [HttpGet]
-        [Authorize]
         public ActionResult Index()
         {
             return View();
@@ -20,7 +20,6 @@ namespace LSCS.Web.Controllers
 
         [Route("new")]
         [HttpGet]
-        [AllowAnonymous]
         public ActionResult New()
         {
             return View();
@@ -28,7 +27,6 @@ namespace LSCS.Web.Controllers
 
         [Route("edit/{id}")]
         [HttpGet]
-        [AllowAnonymous]
         public ActionResult Edit(Guid id)
         {
             var client = new HttpClient();
@@ -40,7 +38,6 @@ namespace LSCS.Web.Controllers
 
         [Route("{id}")]
         [HttpGet]
-        [AllowAnonymous]
         public ActionResult Show(Guid id)
         {
             ViewBag.Id = id;
