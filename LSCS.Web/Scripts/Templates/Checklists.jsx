@@ -1,14 +1,19 @@
-﻿var Checklist = React.createClass({
+﻿
+
+var Checklist = React.createClass({
+    handleClick: function(e) {
+        e.preventDefault();
+        this.props.onDelete(this.props.index, this.props.data.Id);
+    },
     render: function() {
         editUrl = "http://localhost:49177/checklists/edit/" + this.props.data.Id;
-        deleteUrl = "http://localhost:1059/api/checklists/" + this.props.data.Id;
         return (
             <tr>
                 <td>{this.props.data.Title}</td>
                 <td>{this.props.data.SurveyLocation.LandDistrict.Name}</td>
                 <td>{this.props.data.Description}</td>
                 <td>{this.props.data.FileNumber}</td>
-                <td><a href={editUrl}>Edit</a> <a href={deleteUrl} className="delete-checklist-link">Delete</a></td>
+                <td><a href={editUrl}>Edit</a> <a href="#" onClick={this.handleClick}>Delete</a></td>
             </tr>
         );
     }
@@ -28,13 +33,30 @@ var ChecklistList = React.createClass({
         this.loadChecklistsFromServer();
         window.setInterval(this.loadChecklistsFromServer, this.props.pollInterval);
     },
-        getInitialState: function() {
+    getInitialState: function() {
         return {data: []};
     },
+    deleteChecklist: function(index, id) {
+        var deleteUrl = "http://localhost:1059/api/checklists/" + id;
+        var checklists = this.state.data;
+        var component = this;
+
+        $.ajax({
+            method: "DELETE",
+            url: deleteUrl,
+            success: function(msg) {
+                component.setState({ data: checklists.splice(index, 1) })
+            }
+        })
+        .fail(function (jqXHR, status, error) {
+            alert("Failed to delete checklist: " + status);
+        })
+    },
     render: function() {
-        var checklistNodes = this.state.data.map(function (checklist) {
+        var deleteFunction = this.deleteChecklist;
+        var checklistNodes = this.state.data.map(function (checklist, index) {
             return (
-                <Checklist data={checklist} />
+                <Checklist data={checklist} index={index} key={index} onDelete={deleteFunction} />
             );
         });
         return (
@@ -51,7 +73,7 @@ var ChecklistList = React.createClass({
                 <tbody>
                     {checklistNodes}
                 </tbody>
-            </table>
+            </table>     
         );
     }
 });
