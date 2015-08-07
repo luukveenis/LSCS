@@ -5,7 +5,9 @@
     <h3><strong><big>Login</big></strong></h3>
 </div>
 <div class="col-md-12">
-    <section id="loginForm">
+    @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
         <div class="form-group">
             <input type="text" name="username" placeholder="Username" class="form-control" />
         </div>
@@ -17,6 +19,6 @@
                 <input type="submit" value="Log In" class="btn btn-default" />
             </div>
         </div>
-    </section>
+    }
 </div>
 
