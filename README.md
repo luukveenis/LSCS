@@ -30,7 +30,7 @@ As the name indicates, this project contains the API. The API is responsible for
 
 ## LSCS.Web
 
-The Web project contains the main web app. This project is where all the UI for the LSCS system is built. As discussed in our report, much of the front end uses React.JS to dynamically load data into the page as it is modified. The React components can be found in the `scripts/templates` directory in 2 `.jsx` files.
+The Web project contains the main web app. This project is where all the UI for the LSCS system is built. As discussed in our report, much of the front end uses React.JS to dynamically load data into the page as it is modified. The React components can be found in the `scripts/templates` directory in two `.jsx` files.
 
 The Web project also manages user accounts. It is supported by a SQL Server database instead of MongoDB, like the API. It provides the mechanisms to create new accounts, log in, log out, etc.
 
