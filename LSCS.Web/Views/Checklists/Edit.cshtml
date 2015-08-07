@@ -125,6 +125,10 @@
                 </div>
             </fieldset>
         </div>
+        <iframe id="forecast_embed" type="text/html" frameborder="0" height="245" width="100%"
+                src="http://forecast.io/embed/#lat=@(Model.SurveyLocation.Coordinate.Latitude)&lon=@(Model.SurveyLocation.Coordinate.Longitude)&name=@(Model.SurveyLocation.LandDistrict.Name)"></iframe>
+        <iframe src="https://www.google.com/maps/embed/v1/place?q=@(Model.SurveyLocation.Coordinate.Latitude)%2c@(Model.SurveyLocation.Coordinate.Longitude)&key=AIzaSyCJ03ynONA_qVG4ILQ6F5Zlo4DB8YHdBb0"
+                width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
         <table class="table">
             <thead>
                 <tr>
@@ -140,7 +144,7 @@
                         <td class="col-md-3">
                             @foreach (var status in Enum.GetValues(typeof(LSCS.Models.ChecklistItemStatus)))
                             {
-                                <label class="control-label radio-inline radio-label">
+                                <label class="radio-inline radio-label">
                                     @Html.RadioButtonFor(model => model.Items[i].Status, status)
                                     @status.ToString()
                                 </label>

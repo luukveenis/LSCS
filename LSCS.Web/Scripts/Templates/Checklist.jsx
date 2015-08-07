@@ -17,7 +17,7 @@
         getInitialState: function() {
             return {data: []};
         },
-        render: function() {           
+        render: function() {
             //Need to format date fields
             return (this.state.data.length == 0) ? <div></div> : (
                 <div>
@@ -27,6 +27,8 @@
                             <h4>Created on: {this.state.data.CreatedAt}</h4>
                             <h4>Last modified: {this.state.data.LastModified}</h4>
                             <h4>Land District: {this.state.data.SurveyLocation.LandDistrict.Name}</h4>
+                            <br />
+                            <h4>Description: {this.state.data.Description}</h4>
                         </div>
                         <div className="col-md-3">
                             <address>
@@ -37,9 +39,11 @@
                         </div>
                     </div>
                     <br/>
-                    <div className="checklist-descr col-md-12">
-                        <p>{this.state.data.Description}</p>
-                    </div>
+                    <iframe id="forecast_embed" type="text/html" frameBorder="0" height="245" width="100%"
+                        src={"http://forecast.io/embed/#lat=" + this.state.data.SurveyLocation.Coordinate.Latitude + "&lon=" + this.state.data.SurveyLocation.Coordinate.Longitude + "&name=" + this.state.data.SurveyLocation.LandDistrict.Name}>
+                    </iframe>
+                    <iframe src={"https://www.google.com/maps/embed/v1/place?q=" + this.state.data.SurveyLocation.Coordinate.Latitude + "%2C" + this.state.data.SurveyLocation.Coordinate.Longitude + "&key=AIzaSyCJ03ynONA_qVG4ILQ6F5Zlo4DB8YHdBb0" }
+                        width="600" height="450" frameBorder="0" style={{ border:0 }} allowFullScreen></iframe>
                     <br/>
                     <ItemTable title="Section A: Plan Title" data={this.state.data.Items.slice(0,8)} tableNum="1"/>
                     <ItemTable title="Section B: Main Body of Plan" data={this.state.data.Items.slice(8,26)} tableNum="2"/>
