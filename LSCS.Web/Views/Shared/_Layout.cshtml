@@ -12,6 +12,7 @@
     <script src="~/Scripts/jquery-2.1.4.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/ChecklistForms.js"></script>
+    <script src="~/Scripts/Site.js"></script>
 </head>
 
 <body>
@@ -24,7 +25,8 @@
             <div>
                 <ul class="nav navbar-nav pull-right" id="nav-opt">
                     <li>
-                        <a>Account Management</a>
+                        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { @id = "logout-form" })) { @Html.AntiForgeryToken() }
+                        <a href="#" id="logout-button">Log Out</a>
                     </li>
                 </ul>
             </div>
