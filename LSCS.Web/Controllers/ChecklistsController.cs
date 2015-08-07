@@ -31,8 +31,6 @@ namespace LSCS.Web.Controllers
         [Route("edit/{id}")]
         public ActionResult Edit(Guid id)
         {
-            ViewData["ChecklistId"] = id;
-
             var client = new HttpClient();
             var response = client.GetAsync(new Uri("http://localhost:1059/api/checklists/" + id)).Result;
             var checklist = JsonConvert.DeserializeObject<ChecklistDto>(response.Content.ReadAsStringAsync().Result);
