@@ -5,4 +5,8 @@ The Land Surveyor Checklist System implemented is a Visual C# 2013 'Solution' th
 
 In order for the project to function within a development environment, both the LSCS.API and LSCS.Web projects must be operational and running. LSCS.Web provides the browser with the necessary view template, as dictated by the controllers, and the ReactJS components poll the LSCS.API for whatever data is needed on the page.
 
+All subsystems are functional and capable of dynamic communication and operations. Users can register new accounts, login, logout, assign managerial or surveyor roles, create checklists, edit checklists, remove checklists, and view checklists with live map and weather feeds for the relevant survey coordinates.
+
+We were unable to meet our goals for API security or full support of account management.
+
 
