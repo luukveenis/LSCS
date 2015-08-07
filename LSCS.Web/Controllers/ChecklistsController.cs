@@ -19,12 +19,16 @@ namespace LSCS.Web.Controllers
         }
 
         [Route("new")]
+        [HttpGet]
+        [AllowAnonymous]
         public ActionResult New()
         {
             return View();
         }
 
         [Route("edit/{id}")]
+        [HttpGet]
+        [AllowAnonymous]
         public ActionResult Edit(Guid id)
         {
             var client = new HttpClient();
