@@ -27,6 +27,8 @@
                             <h4>Created on: {this.state.data.CreatedAt}</h4>
                             <h4>Last modified: {this.state.data.LastModified}</h4>
                             <h4>Land District: {this.state.data.SurveyLocation.LandDistrict.Name}</h4>
+                            <br />
+                            <h4>Description: {this.state.data.Description}</h4>
                         </div>
                         <div className="col-md-3">
                             <address>
@@ -37,9 +39,6 @@
                         </div>
                     </div>
                     <br/>
-                    <div className="checklist-descr col-md-12">
-                        <p>{this.state.data.Description}</p>
-                    </div>
                     <iframe id="forecast_embed" type="text/html" frameBorder="0" height="245" width="100%"
                         src={"http://forecast.io/embed/#lat=" + this.state.data.SurveyLocation.Coordinate.Latitude + "&lon=" + this.state.data.SurveyLocation.Coordinate.Longitude + "&name=" + this.state.data.SurveyLocation.LandDistrict.Name}>
                     </iframe>
