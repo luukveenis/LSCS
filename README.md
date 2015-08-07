@@ -41,3 +41,9 @@ The models project contains all the data models that are used by both the API an
 ## LSCS.Repository
 
 The repository project contains code for configuring and handling communication with the database.
+
+# Deploying the Project
+
+This project has a lot of environment dependencies, which is why our team created a VM image to share with much of the environment preconfigured. Within this image we can simply open the solution in visual studio and deploy the project locally using the `Run` button.
+
+Once the App is running, a web browser will automatically open and take you to the main page (if not the app is hosted on localhost:49177 by default). If the user is not authenticated, they will immediately be redirected to a login page and will not have access to the system until they do so. After they log in, the UI should be simple and intuitive enough to not require further explanation.
