@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Security.Claims;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using LSCS.Web.Authentication;
@@ -111,6 +112,8 @@ namespace LSCS.Web.Controllers
                         await UserManager.AddToRoleAsync(newUser.Id, "Administrator");
                     }
                     await UserManager.AddToRoleAsync(newUser.Id, "Surveyor");
+                    await UserManager.AddClaimAsync(newUser.Id, new Claim("FirstName", model.FirstName));
+                    await UserManager.AddClaimAsync(newUser.Id, new Claim("LastName", model.LastName));
 
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                     return RedirectToAction("Login");
