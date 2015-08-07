@@ -20,6 +20,7 @@ namespace LSCS.Web.Controllers
 
         [Route("new")]
         [HttpGet]
+        [Authorize(Roles="Administrator")]
         public ActionResult New()
         {
             return View();

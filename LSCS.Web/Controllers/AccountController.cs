@@ -88,6 +88,7 @@ namespace LSCS.Web.Controllers
         // GET: /Account/Register
         [HttpGet]
         [Route("Register")]
+        [Authorize(Roles="Administrator")]
         [AllowAnonymous]
         public ActionResult Register()
         {
