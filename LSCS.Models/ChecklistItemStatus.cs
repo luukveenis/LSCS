@@ -9,7 +9,7 @@ namespace LSCS.Models
     public enum ChecklistItemStatus
     {
         Unanswered,
-        Answered,
+        Yes,
         NotApplicable
     }
 }

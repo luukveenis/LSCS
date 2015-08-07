@@ -1,60 +1,91 @@
-﻿var Checklist = React.createClass({
-    retrieveChecklistFromServer: function() {
-        var xhr = new XMLHttpRequest();
-        xhr.open('get', this.props.url, true);
-        xhr.onload = function() {
-            var data = JSON.parse(xhr.responseText);
-            this.setProps(data[0]); //Needs to be set to the single checklist to remove the [0] hardcoded indexing necessary on props
-            var surveyLoc = data[0].SurveyLocation;
-        }.bind(this);
-        xhr.send();
-    },
-    componentDidMount: function() {
-        this.retrieveChecklistFromServer();
-        window.setInterval(this.retrieveChecklistFromServer, this.props.pollInterval);
-    },
-    getInitialState: function() {
-        return {data: []};
-    },
-    render: function() {
-        var styles = {
-            //Page styles, not sure how nesting works yet, call in html via "style={styles}"
-        };
+﻿$(function(){
 
-        var address = this.props.SurveyLocation ? this.props.SurveyLocation['Address'] : '';
-        var landDistrict = this.props.SurveyLocation ? this.props.SurveyLocation['LandDistrict'] : '';
+    var ItemTableRow = React.createClass({
+        render: function() {
+            return (
+                <tr>
+                    <td>this.props.data.Text</td>
+                    <td>this.props.data.Status</td>
+                </tr>
+            );
+        }
+    });
 
+    var ItemTable = React.createClass({
+        render: function(){
+            var ItemTableRows = this.props.data.map(function(row, index){
+                return (
+                   <ItemTableRow data={row} key={index} /> 
+                );
+            });
+            return (
+                <table className="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>{this.props.title}</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {ItemTableRows}
+                    </tbody>
+                </table>
+            );
+        }
+    })
 
-        //Need to set hdr-address to left justify when it can't fit with hdr-dates
-        return (
-			<div>
-				<div class="checklist-hdr">
-					<h2 class="checklist-hdr-title" style={{borderBottom:'solid 1px'}}>#{this.props['FileNumber']} - {this.props['Title']}</h2>
-                    <div class="checklist-hdr-dates" style={{display:'inline-block'}}>
-                        <h4>Created on: {this.props['CreatedAt']}</h4>
-                        <h4>Last modified: {this.props['LastModified']}</h4>
-                        <h4>Land District: {landDistrict['Name']}</h4>
+    var Checklist = React.createClass({
+        retrieveChecklistFromServer: function() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('get', this.props.url, true);
+            xhr.onload = function() {
+                var data = JSON.parse(xhr.responseText);
+                this.setState({data: data[0]}); //Needs to be set to the single checklist to remove the [0] hardcoded indexing necessary on props
+                debugger;
+            }.bind(this);
+            xhr.send();
+        },
+        componentDidMount: function() {
+            this.retrieveChecklistFromServer();
+            window.setInterval(this.retrieveChecklistFromServer, this.props.pollInterval);
+        },
+        getInitialState: function() {
+            return {data: []};
+        },
+        render: function() {           
+            //Need to format date fields
+            return (this.state.data.length == 0) ? <div></div> : (
+                <div>
+                    <div className="checklist-hdr">
+                        <h2 className="checklist-hdr-title">#{this.state.data.FileNumber} - {this.state.data.Title}</h2>
+                        <div className="col-md-10">
+                            <h4>Created on: {this.state.data.CreatedAt}</h4>
+                            <h4>Last modified: {this.state.data.LastModified}</h4>
+                            <h4>Land District: {this.state.data.SurveyLocation.LandDistrict.Name}</h4>
+                        </div>
+                        <div className="col-md-2">
+                            <address>
+                                {this.state.data.SurveyLocation.Address.AddressLine1}<br/>
+                                {this.state.data.SurveyLocation.Address.City}, {this.state.data.SurveyLocation.Address.PostalCode}<br/>
+                                {this.state.data.SurveyLocation.Address.StateProvince}, {this.state.data.SurveyLocation.Address.CountryRegion}<br/>
+                            </address>
+                        </div>
                     </div>
-                    <div class="checklist-hdr-address" style={{display:'inline-block', float:'right'}}>
-                        <address>
-                            {address['AddressLine1']}<br/>
-                            {address['City']}, {address['PostalCode']}<br/>
-                            {address['StateProvince']}, {address['CountryRegion']}<br/>
-                        </address>
+                    <br/>
+                    <div className="checklist-descr col-md-12">
+                        <p>{this.state.data.Description}</p>
                     </div>
-				</div>
-				<br/>
-				<div style={{clear:'both'}}>
-					<p>{this.props['Description']}</p>
+                
+                    <ItemTable title="Section A: Plan Title" data={this.state.data.Items} />
+                </div>
+            );
+        
+        }
+    });
 
-				</div>
-			</div>
-        );
-		
-    }
+    var checklistId = $('#checklist-view').data('id')
+    React.render(
+        <Checklist url={"http://localhost:1059/api/checklists/" + checklistId} pollInterval={2000} />,
+        document.getElementById('checklist-view')
+    );
 });
-
-React.render(
-    <Checklist url="http://localhost:1059/api/checklists" pollInterval={2000} />,
-    document.getElementById('checklist-view')
-);

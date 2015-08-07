@@ -6,10 +6,12 @@ var Checklist = React.createClass({
         this.props.onDelete(this.props.index, this.props.data.Id);
     },
     render: function() {
-        editUrl = "http://localhost:49177/checklists/edit/" + this.props.data.Id;
+        var showURL = "http://localhost:49177/checklists/" + this.props.data.Id;
+        var editUrl = "http://localhost:49177/checklists/edit/" + this.props.data.Id;
+        var deleteUrl = "http://localhost:1059/api/checklists/" + this.props.data.Id;
         return (
             <tr>
-                <td>{this.props.data.Title}</td>
+                <td><a href={showURL}>{this.props.data.Title}</a></td>
                 <td>{this.props.data.SurveyLocation.LandDistrict.Name}</td>
                 <td>{this.props.data.Description}</td>
                 <td>{this.props.data.FileNumber}</td>
@@ -17,7 +19,7 @@ var Checklist = React.createClass({
             </tr>
         );
     }
-});
+}); 
 
 var ChecklistList = React.createClass({
     loadChecklistsFromServer: function() {

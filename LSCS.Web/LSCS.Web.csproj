@@ -226,6 +226,7 @@
     <Compile Include="Authentication\SimpleAuthorizationServerProvider.cs" />
     <Compile Include="Authentication\UserDbContext.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ChecklistController.cs" />
     <Compile Include="Controllers\ChecklistsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -249,6 +250,8 @@
     <Content Include="Views\Checklists\Index.cshtml" />
     <Content Include="Views\Checklists\New.cshtml" />
     <Content Include="Views\Checklists\Edit.cshtml" />
+    <Content Include="Views\Checklist\Index.cshtml" />
+    <Content Include="Views\Checklist\Show.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

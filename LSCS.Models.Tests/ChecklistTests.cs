@@ -46,7 +46,7 @@ namespace LSCS.Models.Tests
                 Items = new List<ChecklistItem>{
                     new ChecklistItem {
                         Text = "This is the first item",
-                        Status = ChecklistItemStatus.Answered
+                        Status = ChecklistItemStatus.Yes
                     },
                     new ChecklistItem {
                         Text = "This is the second item",

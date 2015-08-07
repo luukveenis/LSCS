@@ -43,8 +43,28 @@ textarea {
 }
 
 h2{
-    font-weight:100;
+    font-weight:700;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif
+}
+
+.checklist-descr{
+    clear:both;
+}
+.checklist-hdr{
+
+}
+
+.checklist-hdr-title{
+    border-bottom: solid 1px;
+}
+
+.checklist-hdr-dates{
+    display: inline-block;
+}
+
+.checklist-hdr-address{
+    display: inline-block;
+    float: right;
 }
 
 /* ======== Form Styling ======== */
@@ -75,3 +95,4 @@ h2{
 legend {
     border-bottom: none;
 }
+
