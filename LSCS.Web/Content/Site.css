@@ -63,6 +63,11 @@ h2{
     margin: 10px 0;
 }
 
+.table-heading {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
 .radio-label {
     padding-right: 10px;
 }

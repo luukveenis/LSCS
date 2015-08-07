@@ -9,7 +9,8 @@ using Microsoft.Owin.Security;
 
 namespace LSCS.Web.Controllers
 {
-    [RoutePrefix("account")]
+    [Authorize]
+    [RoutePrefix("Account")]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
@@ -49,17 +50,19 @@ namespace LSCS.Web.Controllers
             SignInManager = signInManager;
         }
 
-        [Route("login")]
+        // GET: /Account/Login
         [HttpGet]
         [AllowAnonymous]
+        [Route("Login")]
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
-        [Route("login")]
+        // POST: /Account/Login
         [HttpPost]
+        [Route("Login")]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
@@ -80,16 +83,17 @@ namespace LSCS.Web.Controllers
             }
         }
 
-        [Route("register")]
+        // GET: /Account/Register
         [HttpGet]
+        [Route("Register")]
         [AllowAnonymous]
         public ActionResult Register()
         {
             return View();
         }
 
-        [Route("register")]
         [HttpPost]
+        [Route("Register")]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
@@ -117,17 +121,18 @@ namespace LSCS.Web.Controllers
             return View(model);
         }
 
-        //
         // GET: /Account/ResetPassword
+        [HttpGet]
+        [Route("ResetPassword")]
         [AllowAnonymous]
         public ActionResult ResetPassword()
         {
             return View();
         }
 
-        //
         // POST: /Account/ResetPassword
         [HttpPost]
+        [Route("ResetPassword")]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ResetPassword(ResetPasswordViewModel model)
@@ -151,16 +156,17 @@ namespace LSCS.Web.Controllers
             return View();
         }
 
-        //
         // GET: /Account/ResetPasswordConfirmation
+        [HttpGet]
+        [Route("ResetPasswordConfirmation")]
         [AllowAnonymous]
         public ActionResult ResetPasswordConfirmation()
         {
             return View();
         }
 
-        //
         // POST: /Account/LogOff
+        [Route("LogOff")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()

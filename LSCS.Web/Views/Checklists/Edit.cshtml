@@ -15,19 +15,19 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Title, new { @class = "col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Title)
+                @Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.Description, new { @class = "col-md-2" })
             <div class="col-md-10">
-                @Html.TextAreaFor(model => model.Description, new { @rows = "5", @cols = "80" })
+                @Html.TextAreaFor(model => model.Description, new { @rows = "5", @cols = "80", @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.FileNumber, new { @class = "col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.FileNumber)
+                @Html.TextBoxFor(model => model.FileNumber, new { @type = "number", @class = "form-control" })
             </div>
         </div>
         <div class="form-object">
@@ -39,37 +39,37 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.SurveyLocation.Address.AddressLine1, "Address 1", new { @class = "col-md-2" })
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.SurveyLocation.Address.AddressLine1)
+                                @Html.TextBoxFor(model => model.SurveyLocation.Address.AddressLine1, new { @class = "form-control" })
                             </div>
                         </div>
                         <div class="form-group">
                             @Html.LabelFor(model => model.SurveyLocation.Address.AddressLine2, "Address 2", new { @class = "col-md-2" })
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.SurveyLocation.Address.AddressLine2)
+                                @Html.TextBoxFor(model => model.SurveyLocation.Address.AddressLine2, new { @class = "form-control" })
                             </div>
                         </div>
                         <div class="form-group">
                             @Html.LabelFor(model => model.SurveyLocation.Address.City, new { @class = "col-md-2" })
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.SurveyLocation.Address.City)
+                                @Html.TextBoxFor(model => model.SurveyLocation.Address.City, new { @class = "form-control" })
                             </div>
                         </div>
                         <div class="form-group">
                             @Html.LabelFor(model => model.SurveyLocation.Address.StateProvince, "Province", new { @class = "col-md-2" })
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.SurveyLocation.Address.StateProvince)
+                                @Html.TextBoxFor(model => model.SurveyLocation.Address.StateProvince, new { @class = "form-control" })
                             </div>
                         </div>
                         <div class="form-group">
                             @Html.LabelFor(model => model.SurveyLocation.Address.CountryRegion, "Country", new { @class = "col-md-2" })
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.SurveyLocation.Address.CountryRegion)
+                                @Html.TextBoxFor(model => model.SurveyLocation.Address.CountryRegion, new { @class = "form-control" })
                             </div>
                         </div>
                         <div class="form-group">
                             @Html.LabelFor(model => model.SurveyLocation.Address.PostalCode, "Zip Code", new { @class = "col-md-2" })
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.SurveyLocation.Address.PostalCode)
+                                @Html.TextBoxFor(model => model.SurveyLocation.Address.PostalCode, new { @class = "form-control" })
                             </div>
                         </div>
                     </fieldset>
@@ -80,13 +80,13 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.SurveyLocation.Coordinate.Latitude, new { @class = "col-md-2" })
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.SurveyLocation.Coordinate.Latitude)
+                                @Html.TextBoxFor(model => model.SurveyLocation.Coordinate.Latitude, new { @class = "form-control" })
                             </div>
                         </div>
                         <div class="form-group">
                             @Html.LabelFor(model => model.SurveyLocation.Coordinate.Longitude, new { @class = "col-md-2" })
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.SurveyLocation.Coordinate.Longitude)
+                                @Html.TextBoxFor(model => model.SurveyLocation.Coordinate.Longitude, new { @class = "form-control" })
                             </div>
                         </div>
                     </fieldset>
@@ -97,13 +97,13 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.SurveyLocation.LandDistrict.Name, new { @class = "col-md-2" })
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.SurveyLocation.LandDistrict.Name)
+                                @Html.TextBoxFor(model => model.SurveyLocation.LandDistrict.Name, new { @class = "form-control" })
                             </div>
                         </div>
                         <div class="form-group">
                             @Html.LabelFor(model => model.SurveyLocation.LandDistrict.NtsMap, new { @class = "col-md-2" })
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.SurveyLocation.LandDistrict.NtsMap)
+                                @Html.TextBoxFor(model => model.SurveyLocation.LandDistrict.NtsMap, new { @class = "form-control" })
                             </div>
                         </div>
                         <fieldset name="Coordinate">
@@ -111,13 +111,13 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.SurveyLocation.LandDistrict.Coordinate.Latitude, new { @class = "col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.EditorFor(model => model.SurveyLocation.LandDistrict.Coordinate.Latitude)
+                                    @Html.TextBoxFor(model => model.SurveyLocation.LandDistrict.Coordinate.Latitude, new { @class = "form-control" })
                                 </div>
                             </div>
                             <div class="form-group">
                                 @Html.LabelFor(model => model.SurveyLocation.LandDistrict.Coordinate.Longitude, new { @class = "col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.EditorFor(model => model.SurveyLocation.LandDistrict.Coordinate.Longitude)
+                                    @Html.TextBoxFor(model => model.SurveyLocation.LandDistrict.Coordinate.Longitude, new { @class = "form-control" })
                                 </div>
                             </div>
                         </fieldset>
@@ -125,23 +125,181 @@
                 </div>
             </fieldset>
         </div>
-        <div class="form-object">
-            @for (var i = 0; i < Model.Items.Count; i++)
-            {
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Items[i], Model.Items[i].Text, new { @class = "col-md-6" })
-                    <div class="col-md-8">
-                        @foreach (var status in Enum.GetValues(typeof(LSCS.Models.ChecklistItemStatus)))
-                        {
-                            <label class="control-label radio-inline radio-label">
-                                @Html.RadioButtonFor(model => model.Items[i].Status, status)
-                                @status.ToString()
-                            </label>
-                        }
-                    </div>
-                </div>
-            }
-        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="table-heading">A - Plan Title</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (var i = 0; i < 8; i++)
+                {
+                    <tr>
+                        <td class="col-md-9">@Model.Items[i].Text</td>
+                        <td class="col-md-3">
+                            @foreach (var status in Enum.GetValues(typeof(LSCS.Models.ChecklistItemStatus)))
+                            {
+                                <label class="control-label radio-inline radio-label">
+                                    @Html.RadioButtonFor(model => model.Items[i].Status, status)
+                                    @status.ToString()
+                                </label>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="table-heading">B - Main Body of Plan</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (var i = 8; i < 26; i++)
+                {
+                    <tr>
+                        <td class="col-md-9">@Model.Items[i].Text</td>
+                        <td class="col-md-3">
+                            @foreach (var status in Enum.GetValues(typeof(LSCS.Models.ChecklistItemStatus)))
+                            {
+                                <label class="control-label radio-inline radio-label">
+                                    @Html.RadioButtonFor(model => model.Items[i].Status, status)
+                                    @status.ToString()
+                                </label>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="table-heading">C - Scenery</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (var i = 26; i < 33; i++)
+                {
+                    <tr>
+                        <td class="col-md-9">@Model.Items[i].Text</td>
+                        <td class="col-md-3">
+                            @foreach (var status in Enum.GetValues(typeof(LSCS.Models.ChecklistItemStatus)))
+                            {
+                                <label class="control-label radio-inline radio-label">
+                                    @Html.RadioButtonFor(model => model.Items[i].Status, status)
+                                    @status.ToString()
+                                </label>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="table-heading">D - Deposit Statement</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (var i = 33; i < 35; i++)
+                {
+                    <tr>
+                        <td class="col-md-9">@Model.Items[i].Text</td>
+                        <td class="col-md-3"    >
+                            @foreach (var status in Enum.GetValues(typeof(LSCS.Models.ChecklistItemStatus)))
+                            {
+                                <label class="control-label radio-inline radio-label">
+                                    @Html.RadioButtonFor(model => model.Items[i].Status, status)
+                                    @status.ToString()
+                                </label>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="table-heading">E - Integrated Survey Area</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (var i = 35; i < 39; i++)
+                {
+                    <tr>
+                        <td class="col-md-9">@Model.Items[i].Text</td>
+                        <td class="col-md-3">
+                            @foreach (var status in Enum.GetValues(typeof(LSCS.Models.ChecklistItemStatus)))
+                            {
+                                <label class="control-label radio-inline radio-label">
+                                    @Html.RadioButtonFor(model => model.Items[i].Status, status)
+                                    @status.ToString()
+                                </label>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="table-heading">F - Miscellaneous</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (var i = 39; i < 43; i++)
+                {
+                    <tr>
+                        <td class="col-md-9">@Model.Items[i].Text</td>
+                        <td class="col-md-3">
+                            @foreach (var status in Enum.GetValues(typeof(LSCS.Models.ChecklistItemStatus)))
+                            {
+                                <label class="control-label radio-inline radio-label">
+                                    @Html.RadioButtonFor(model => model.Items[i].Status, status)
+                                    @status.ToString()
+                                </label>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="table-heading">G - Electronic Plan</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (var i = 43; i < 47; i++)
+                {
+                    <tr>
+                        <td class="col-md-9">@Model.Items[i].Text</td>
+                        <td class="col-md-3">
+                            @foreach (var status in Enum.GetValues(typeof(LSCS.Models.ChecklistItemStatus)))
+                            {
+                                <label class="control-label radio-inline radio-label">
+                                    @Html.RadioButtonFor(model => model.Items[i].Status, status)
+                                    @status.ToString()
+                                </label>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
         <div class="form-group">
             <div class="col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />
