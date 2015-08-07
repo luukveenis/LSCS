@@ -50,6 +50,7 @@ namespace LSCS.Web.Controllers
             SignInManager = signInManager;
         }
 
+        // GET: /Account/Login
         [HttpGet]
         [AllowAnonymous]
         [Route("Login")]
@@ -59,6 +60,7 @@ namespace LSCS.Web.Controllers
             return View();
         }
 
+        // POST: /Account/Login
         [HttpPost]
         [Route("Login")]
         [AllowAnonymous]
@@ -81,7 +83,6 @@ namespace LSCS.Web.Controllers
             }
         }
 
-        //
         // GET: /Account/Register
         [HttpGet]
         [Route("Register")]
@@ -120,7 +121,6 @@ namespace LSCS.Web.Controllers
             return View(model);
         }
 
-        //
         // GET: /Account/ResetPassword
         [HttpGet]
         [Route("ResetPassword")]
@@ -130,7 +130,6 @@ namespace LSCS.Web.Controllers
             return View();
         }
 
-        //
         // POST: /Account/ResetPassword
         [HttpPost]
         [Route("ResetPassword")]
@@ -157,7 +156,6 @@ namespace LSCS.Web.Controllers
             return View();
         }
 
-        //
         // GET: /Account/ResetPasswordConfirmation
         [HttpGet]
         [Route("ResetPasswordConfirmation")]
@@ -167,7 +165,6 @@ namespace LSCS.Web.Controllers
             return View();
         }
 
-        //
         // POST: /Account/LogOff
         [Route("LogOff")]
         [HttpPost]
