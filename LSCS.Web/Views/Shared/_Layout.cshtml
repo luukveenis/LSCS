@@ -25,6 +25,9 @@
             <div>
                 <ul class="nav navbar-nav pull-right" id="nav-opt">
                     <li>
+                        @Html.ActionLink("Checklists", "Index", "Checklists")
+                    </li>
+                    <li>
                         @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { @id = "logout-form" })) { @Html.AntiForgeryToken() }
                         <a href="#" id="logout-button">Log Out</a>
                     </li>
