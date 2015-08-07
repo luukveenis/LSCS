@@ -19,12 +19,16 @@ namespace LSCS.Web.Controllers
         }
 
         [Route("new")]
+        [HttpGet]
+        [AllowAnonymous]
         public ActionResult New()
         {
             return View();
         }
 
         [Route("edit/{id}")]
+        [HttpGet]
+        [AllowAnonymous]
         public ActionResult Edit(Guid id)
         {
             var client = new HttpClient();
@@ -32,6 +36,15 @@ namespace LSCS.Web.Controllers
             var checklist = JsonConvert.DeserializeObject<ChecklistDto>(response.Content.ReadAsStringAsync().Result);
 
             return View(checklist);
+        }
+
+        [Route("{id}")]
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult Show(Guid id)
+        {
+            ViewBag.Id = id;
+            return View();
         }
     }
 }

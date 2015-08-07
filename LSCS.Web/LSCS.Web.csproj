@@ -249,6 +249,7 @@
     <Content Include="Views\Checklists\Index.cshtml" />
     <Content Include="Views\Checklists\New.cshtml" />
     <Content Include="Views\Checklists\Edit.cshtml" />
+    <Content Include="Views\Checklists\Show.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
