@@ -8,7 +8,6 @@ var Checklist = React.createClass({
     render: function() {
         var showURL = "http://localhost:49177/checklists/" + this.props.data.Id;
         var editUrl = "http://localhost:49177/checklists/edit/" + this.props.data.Id;
-        var deleteUrl = "http://localhost:1059/api/checklists/" + this.props.data.Id;
         return (
             <tr>
                 <td><a href={showURL}>{this.props.data.Title}</a></td>
