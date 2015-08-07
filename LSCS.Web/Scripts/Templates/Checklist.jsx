@@ -17,7 +17,7 @@
         getInitialState: function() {
             return {data: []};
         },
-        render: function() {           
+        render: function() {
             //Need to format date fields
             return (this.state.data.length == 0) ? <div></div> : (
                 <div>
@@ -40,6 +40,8 @@
                     <div className="checklist-descr col-md-12">
                         <p>{this.state.data.Description}</p>
                     </div>
+                    <iframe src={"https://www.google.com/maps/embed/v1/place?q=" + this.state.data.SurveyLocation.Coordinate.Latitude + "%2C" + this.state.data.SurveyLocation.Coordinate.Longitude + "&key=AIzaSyCJ03ynONA_qVG4ILQ6F5Zlo4DB8YHdBb0" }
+                        width="600" height="450" frameBorder="0" style={{ border:0 }} allowFullScreen></iframe>
                     <br/>
                     <ItemTable title="Section A: Plan Title" data={this.state.data.Items.slice(0,8)} tableNum="1"/>
                     <ItemTable title="Section B: Main Body of Plan" data={this.state.data.Items.slice(8,26)} tableNum="2"/>
