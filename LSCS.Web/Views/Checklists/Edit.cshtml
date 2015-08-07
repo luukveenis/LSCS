@@ -1,7 +1,7 @@
 ﻿@model LSCS.Models.ChecklistDto
 
 @{
-    ViewBag.Title = "New Checklist";
+    ViewBag.Title = "Edit Checklist";
 }
 
 @using (Html.BeginForm(null, null, FormMethod.Post, new { @action = "http://localhost:1059/api/checklists/" + Model.Id, @id = "edit-checklist-form" }))
@@ -9,7 +9,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal container-inline">
-        <h4>New Checklist</h4>
+        <h4>Edit Checklist</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
