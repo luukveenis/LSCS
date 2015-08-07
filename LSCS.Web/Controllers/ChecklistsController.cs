@@ -33,5 +33,14 @@ namespace LSCS.Web.Controllers
 
             return View(checklist);
         }
+
+        [Route("{id}")]
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult Show(Guid id)
+        {
+            ViewBag.Id = id;
+            return View();
+        }
     }
 }
